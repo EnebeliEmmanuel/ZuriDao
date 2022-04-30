@@ -1,28 +1,18 @@
 import react from "react";
 import {
-  Divider,
-  Drawer,
   Hidden,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
 } from "@mui/material";
 import classNames from "classnames";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useStyles } from "./styles";
 import { Link } from "react-router-dom";
 import React, {
-  useState,
   useCallback,
   useEffect,
   useRef,
   useContext,
 } from "react";
 import "./index.css";
-//import logo from '../../assets/images/icons/logo.svg';
-import CloseIcon from "@mui/icons-material/Close";
 import { useGlobalStyles } from "../../styles";
 import { ReactComponent as Logo } from "../../assets/images/icons/logo.svg";
 import { AppContext } from "../../context/AppContext";
@@ -30,15 +20,8 @@ import { AppContext } from "../../context/AppContext";
 
 
 const Header = () => {
-  //const display = useDisplay();
-  //const text = useTypography();
-  // const bg = useBackground();
-  //const responsive = useResponsive();
   const classes = useStyles();
   const globalStyles = useGlobalStyles();
-
-  
-
   const headerRef = useRef();
   const scrollHelper = useCallback(
     (pageYOffset) => {
@@ -65,11 +48,9 @@ const Header = () => {
     });
   }, [scrollHelper]);
 
-
- 
   return (
     <header
-      
+
       className={classNames(
         "flex items-center justify-between py-4 sm:py-6 absolute w-full bg-no-repeat header",
         globalStyles.px,
@@ -77,7 +58,6 @@ const Header = () => {
       )}
       ref={headerRef}
     >
-       {/* <button onclick={connectWallet}>Connect wallet</button> */}
 
       <div className={classNames("flex items-center")}>
         <Link to="/">
@@ -87,12 +67,12 @@ const Header = () => {
       <div>
         <ul className=" space-x-8 sm:flex hidden" >
           <Link to="/elections" className=" text-decoration-none">
-          <li className=" text-gray-500 font-semibold cursor-pointer hover:bg-blue-300  hover:bg-opacity-25 px-3 py-2 rounded-md translate-x-1 duration-1000">Voting Portal</li>
+            <li className=" text-gray-500 font-semibold cursor-pointer hover:bg-blue-300  hover:bg-opacity-25 px-3 py-2 rounded-md translate-x-1 duration-1000">Voting Portal</li>
           </Link>
           {isChairman || isTeacher ? (
-            <Link to="/admin" className=" text-decoration-none">
+            (<Link to="/admin" className=" text-decoration-none">
             <li className=" text-gray-500 font-semibold cursor-pointer hover:bg-blue-300 hover:bg-opacity-25 px-3 py-2 rounded-md translate-x-1 duration-1000">Admin Portal</li>
-            </Link>
+            </Link>)
           ) : ""}
         </ul>
       </div>
