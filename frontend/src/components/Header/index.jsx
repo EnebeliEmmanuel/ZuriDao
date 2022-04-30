@@ -53,6 +53,8 @@ const Header = () => {
     [classes]
   );
 
+  
+
   const { currentAccount, connectWallet, disconnectWallet , isChairman, isTeacher, isStarted, isCreated} = useContext(AppContext);
 
 
